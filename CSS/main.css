@@ -69,6 +69,7 @@ header > h1 {
 
 a.disabled {
   pointer-events: none;
+  background-color: lightgray;
 }
 
 .sectionHeading {
