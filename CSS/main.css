@@ -19,7 +19,7 @@ header > h1 {
   padding: 0px 10px 0px 10px;
 }
 
-.navMenu .assignments {
+.navMenu .assignmentList {
   display: flex;
 }
 
@@ -42,17 +42,17 @@ header > h1 {
   color: white;
   background-color: black;
 }
-.assignments {
+.assignmentList {
   display: block !important;
   padding: 0px 5px 0px 5px;
   margin: 0px;
 }
 
-.assignments li {
+.assignmentList li {
   display: inline-block !important;
 }
 
-.assignments a {
+.assignmentList a {
   text-decoration: none;
   border: 1px solid #51789b;
   border-radius: 5px;
@@ -97,18 +97,17 @@ a.disabled {
   display: flex;
 }
 
-.pictureDiv {
-  border-right: 2px solid white;
+.profPicture {
   width: 22%;
   display: block;
   padding: 5px;
 }
-.pictureDiv > img {
+.profPicture > img {
   width: -webkit-fill-available;
   padding: 5px;
 }
 
-.assignmentDiv {
+.assignment {
   width: 78%;
   display: block;
   padding: 5px;
@@ -155,17 +154,32 @@ footer {
 .imdbLink {
   color: white;
   text-decoration: none;
+  display: contents;
 }
 
-.movieDiv {
-  border-right: 2px solid white;
+.sectionTitle {
+  display: block;
+  padding: 5px;
+}
+
+.sectionTitle > p {
+  padding: 5px 5px 5px 10px;
+}
+.movie,
+.emotions {
   width: 16%;
   display: block;
   padding: 5px;
 }
-.movieDiv > img {
+.movie > img {
   width: -webkit-fill-available;
   padding: 5px;
+}
+.emotions > img {
+  width: 150px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .movieDescription {
@@ -177,4 +191,155 @@ footer {
 .movieDescription > p {
   margin: 0px;
   padding: 5px;
+}
+
+.fBold {
+  font-weight: bold;
+}
+
+.fBolder {
+  font-weight: bolder;
+}
+
+.bgBlack {
+  background-color: black !important;
+}
+
+.bgGreen {
+  background-color: rgb(15, 172, 9) !important;
+}
+
+.txtWhite {
+  color: white !important;
+}
+
+.bgBlue {
+  background-color: #51789b !important;
+}
+.paddingTop5 {
+  padding-top: 5px;
+}
+
+.paddingBottom5 {
+  padding-bottom: 5px;
+}
+
+.paddingLeft5 {
+  padding-left: 5px;
+}
+
+.paddingRigth5 {
+  padding-right: 5px;
+}
+
+.marginTop5 {
+  margin-top: 5px;
+}
+
+.marginBottom5 {
+  margin-bottom: 5px;
+}
+
+.marginLeft5 {
+  margin-left: 5px;
+}
+
+.marginRigth5 {
+  margin-right: 5px;
+}
+
+.paddingTop10 {
+  padding-top: 10px;
+}
+
+.paddingBottom10 {
+  padding-bottom: 10px;
+}
+
+.paddingLeft10 {
+  padding-left: 10px;
+}
+
+.paddingRigth10 {
+  padding-right: 10px;
+}
+
+.marginTop10 {
+  margin-top: 10px;
+}
+
+.marginBottom10 {
+  margin-bottom: 10px;
+}
+
+.marginLeft10 {
+  margin-left: 10px;
+}
+
+.marginRigth10 {
+  margin-right: 10px;
+}
+
+.paddingTop15 {
+  padding-top: 15px;
+}
+
+.paddingBottom15 {
+  padding-bottom: 15px;
+}
+
+.paddingLeft15 {
+  padding-left: 15px;
+}
+
+.paddingRigth15 {
+  padding-right: 15px;
+}
+
+.marginTop15 {
+  margin-top: 15px;
+}
+
+.marginBottom15 {
+  margin-bottom: 15px;
+}
+
+.marginLeft15 {
+  margin-left: 15px;
+}
+
+.marginRigth15 {
+  margin-right: 15px;
+}
+
+dl {
+  padding: 10px;
+  display: block !important;
+  list-style: none;
+}
+dt {
+  font-weight: bold;
+}
+.dBlock {
+  display: block !important;
+}
+
+.dFlex {
+  display: flex !important;
+}
+
+.noLiStyle {
+  list-style: none;
+}
+
+.courses li {
+  display: list-item;
+}
+
+.txtCenter {
+  text-align: center;
+}
+
+.justifyCenter {
+  justify-content: center;
 }
