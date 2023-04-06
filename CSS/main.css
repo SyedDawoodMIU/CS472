@@ -44,6 +44,8 @@ header > h1 {
 }
 .assignments {
   display: block !important;
+  padding: 0px 5px 0px 5px;
+
 }
 
 .assignments li {
