@@ -3,17 +3,17 @@ body {
   font-family: sans-serif;
 }
 
-.title {
-  padding-top: 5px;
-  padding-bottom: 10px;
-}
-
 header {
   background-color: darkgray;
   padding: 10px;
   color: darkred;
+  border-radius: 5px;
 }
 
+header > h1 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .navMenu .assignments {
   display: flex;
 }
@@ -32,10 +32,12 @@ header {
   color: black;
   background-color: lightgray;
 }
+.assignments {
+  display: block !important;
+}
 
 .assignments li {
-  display: inline;
-  list-style-type: none;
+  display: inline-block !important;
 }
 
 .assignments a {
@@ -44,10 +46,10 @@ header {
   border-radius: 5px;
   padding: 20px;
   margin: 5px;
-  display: inline-block;
+  display: inline-flex;
   color: black;
   background-color: lightgray;
-  width: 120px;
+  width: 85px;
 }
 .assignments a:hover {
   color: black;
@@ -62,4 +64,77 @@ header {
 
 a.disabled {
   pointer-events: none;
+}
+
+.sectionHeading {
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  margin: 5px;
+}
+
+.mainBody {
+  background: #f1eded;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.mainBody * {
+  display: flex;
+}
+
+.pictureDiv {
+  border-right: 2px solid white;
+  width: 22%;
+  display: block;
+  padding: 5px;
+}
+.pictureDiv > img {
+  width: -webkit-fill-available;
+  padding: 5px;
+}
+
+.assignmentDiv {
+  width: 78%;
+  display: block;
+  padding: 5px;
+}
+
+.border {
+  border: 2px solid white;
+}
+
+.assignmentDone {
+  color: darkgreen;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.assignmentNotDone {
+  color: red;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.assignmentNotGiven {
+  color: yellow;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.validators {
+  margin: 10px 0px 10px 0px;
+  padding: 10px;
+}
+
+hr {
+  margin: 0px;
+}
+
+footer {
+  background-color: black;
+  color: #f1eded;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
 }
