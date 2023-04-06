@@ -14,6 +14,11 @@ header > h1 {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.navMenu {
+  padding: 0px 10px 0px 10px;
+}
+
 .navMenu .assignments {
   display: flex;
 }
@@ -130,7 +135,7 @@ a.disabled {
 }
 
 .validators {
-  margin: 10px 0px 10px 0px;
+  margin: 0px 0px 10px 0px;
   padding: 10px;
 }
 
