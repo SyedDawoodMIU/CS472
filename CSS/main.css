@@ -46,7 +46,6 @@ header > h1 {
   display: block !important;
   padding: 0px 5px 0px 5px;
   margin: 0px;
-
 }
 
 .assignments li {
@@ -151,4 +150,31 @@ footer {
   color: #f1eded;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
+}
+
+.imdbLink {
+  color: white;
+  text-decoration: none;
+}
+
+.movieDiv {
+  border-right: 2px solid white;
+  width: 16%;
+  display: block;
+  padding: 5px;
+}
+.movieDiv > img {
+  width: -webkit-fill-available;
+  padding: 5px;
+}
+
+.movieDescription {
+  width: 34%;
+  display: block;
+  padding: 5px;
+}
+
+.movieDescription > p {
+  margin: 0px;
+  padding: 5px;
 }
