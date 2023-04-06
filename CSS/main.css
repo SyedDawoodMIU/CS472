@@ -4,9 +4,9 @@ body {
 }
 
 header {
-  background-color: darkgray;
+  background-color: #51789b;
   padding: 10px;
-  color: darkred;
+  color: white;
   border-radius: 5px;
 }
 
@@ -26,11 +26,16 @@ header > h1 {
 
 .navMenu a {
   text-decoration: none;
-  border: 1px solid black;
+  border: 1px solid #51789b;
   border-radius: 5px;
   padding: 5px;
-  color: black;
-  background-color: lightgray;
+  color: #51789b;
+  background-color: white;
+}
+
+.navMenu a:hover {
+  color: white;
+  background-color: black;
 }
 .assignments {
   display: block !important;
@@ -42,18 +47,18 @@ header > h1 {
 
 .assignments a {
   text-decoration: none;
-  border: 1px solid black;
+  border: 1px solid #51789b;
   border-radius: 5px;
   padding: 20px;
   margin: 5px;
   display: inline-flex;
-  color: black;
-  background-color: lightgray;
+  color: #51789b;
+  background-color: white;
   width: 85px;
 }
 .assignments a:hover {
-  color: black;
-  background-color: rgb(224, 239, 243);
+  color: white;
+  background-color: #51789b;
 }
 
 .validatorBtn {
@@ -67,7 +72,7 @@ a.disabled {
 }
 
 .sectionHeading {
-  background-color: black;
+  background-color: #51789b;
   border-radius: 5px;
   padding: 10px;
   color: white;
@@ -133,7 +138,7 @@ hr {
 }
 
 footer {
-  background-color: black;
+  background-color: #51789b;
   color: #f1eded;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
