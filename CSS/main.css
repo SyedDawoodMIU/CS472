@@ -3,6 +3,11 @@ body {
   font-family: sans-serif;
 }
 
+.title {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
 header {
   background-color: darkgray;
   padding: 10px;
@@ -37,13 +42,24 @@ header {
   text-decoration: none;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 15px;
+  padding: 20px;
   margin: 5px;
+  display: inline-block;
   color: black;
   background-color: lightgray;
+  width: 120px;
 }
+.assignments a:hover {
+  color: black;
+  background-color: rgb(224, 239, 243);
+}
+
 .validatorBtn {
   border: 0;
   width: 88px;
   height: 31px;
+}
+
+a.disabled {
+  pointer-events: none;
 }
