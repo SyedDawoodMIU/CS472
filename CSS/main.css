@@ -65,6 +65,10 @@ header > h1 {
   width: 85px;
 }
 
+.assignmentList a:hover {
+  border-color: black;
+}
+
 .assignments a:hover {
   color: white;
   background-color: #51789b;
