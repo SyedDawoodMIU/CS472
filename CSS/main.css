@@ -374,3 +374,8 @@ dt {
 .justifyCenter {
   justify-content: center;
 }
+
+.sectionTitle li::first-letter {
+  font-size:  2em !important;
+  letter-spacing: 2px;
+}
