@@ -42,6 +42,7 @@ header > h1 {
   color: white;
   background-color: black;
 }
+
 .assignmentList {
   display: block !important;
   padding: 0px 5px 0px 5px;
@@ -56,13 +57,14 @@ header > h1 {
   text-decoration: none;
   border: 1px solid #51789b;
   border-radius: 5px;
-  padding: 20px;
+  padding: 21px;
   margin: 5px;
   display: inline-flex;
   color: #51789b;
   background-color: white;
   width: 85px;
 }
+
 .assignments a:hover {
   color: white;
   background-color: #51789b;
@@ -102,6 +104,7 @@ a.disabled {
   display: block;
   padding: 5px;
 }
+
 .profPicture > img {
   width: -webkit-fill-available;
   padding: 5px;
@@ -157,6 +160,10 @@ footer {
   display: contents;
 }
 
+.imdbLink:hover {
+  font-style: italic;
+}
+
 .sectionTitle {
   display: block;
   padding: 5px;
@@ -165,21 +172,31 @@ footer {
 .sectionTitle > p {
   padding: 5px 5px 5px 10px;
 }
+
 .movie,
 .emotions {
   width: 16%;
   display: block;
   padding: 5px;
 }
+
 .movie > img {
   width: -webkit-fill-available;
   padding: 5px;
 }
+
 .emotions > img {
   width: 150px;
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.emotions span {
+  visibility: hidden;
+}
+.emotions:hover span {
+  visibility: visible;
 }
 
 .movieDescription {
@@ -216,6 +233,7 @@ footer {
 .bgBlue {
   background-color: #51789b !important;
 }
+
 .paddingTop5 {
   padding-top: 5px;
 }
@@ -317,9 +335,11 @@ dl {
   display: block !important;
   list-style: none;
 }
+
 dt {
   font-weight: bold;
 }
+
 .dBlock {
   display: block !important;
 }

@@ -1,0 +1,89 @@
+body {
+  background-color: #fff;
+  background-image: url("silverware.jpg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  color: #404040;
+  font-size: 11pt;
+  font-family: Georgia, Garamond, sans-serif;
+}
+
+.forGroundColor,
+a,
+h1,
+h2 {
+  color: #a4a400;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1 > span,
+h2 > span {
+  background-color: #f0f0f0;
+  font-family: "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  text-decoration: underline;
+  letter-spacing: 0.25em;
+  display: inline-block;
+}
+
+h1 {
+  font-size: 22pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.summary ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 1em;
+}
+
+.ingredients ul {
+  list-style-image: url("pie_icon.gif");
+}
+
+blockquote * {
+  font-style: italic;
+  background-color: #ffffa8;
+}
+
+.strikeOut {
+  text-decoration: line-through;
+}
+
+.links ul {
+  list-style-type: none;
+  margin-top: 1em;
+}
+
+.validatorBtn {
+  border: 0;
+  width: 88px;
+  height: 31px;
+}
+
+.fBold {
+  font-weight: bold;
+}
+
+.fBolder {
+  font-weight: bolder;
+}
+.paddingTop10 {
+  padding-top: 10px;
+}
+
+footer {
+  float: right;
+  text-align: right;
+  font-family: monospace;
+}
