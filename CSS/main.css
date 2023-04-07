@@ -233,6 +233,13 @@ footer {
 .txtWhite {
   color: white !important;
 }
+.txtDark {
+  color: black !important;
+}
+
+.txtBlue {
+  color: #51789b !important;
+}
 
 .bgBlue {
   background-color: #51789b !important;
