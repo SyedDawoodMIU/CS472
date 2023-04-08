@@ -12,13 +12,13 @@
     <title>CS HelpDesk Assignment 3</title>
 </head>
 
-<body class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light">
+<body class="container-fluid px-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand d-flex" href="/">
                 <img src="https://s3.us-west-2.amazonaws.com/hf-files-oregon/hdpmiu_user_customized/2022/08-30/a4ce5601-eeaa-4d0c-8119-4b5d80934707/GJ.jpg"
                     alt="happy fox logo" width="33px" height="34px">
-                <div class="text-sm ps-3 ">| Compro Help Desk</div>
+                <div class="text-sm ps-3 pt-1">| Compro Help Desk</div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h6">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Agent Portal</a>
+                        <a class="nav-link" href="#">Agent Portal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Submit Ticket</a>
@@ -41,28 +41,26 @@
                     </li>
 
                 </ul>
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
             </div>
         </div>
     </nav>
-    <div class="row banner text-center text-light">
+    <div class="banner text-center text-light">
         <h1>Welcome to our Support Center</h1>
     </div>
-    <div class="row mt-5 bodyContainer">
-        <div class="col-md-6">
+    <div class="row py-5 bodyContainer m-0">
+        <div class="col-md-6 border-end pb-md-0 mb-5 mb-md-0">
             <div class="row">
                 <div class="col-md-9 ms-auto px-5">
                     <h3 class="fw-bold">Login</h3>
                     <h6 class="text-muted">Login to know the status of the ticket</h6>
-                    <div class="azureBanner text-center my-3 py-2 border bg-light">
-                        <a href="/saml/login/?return_to=/tickets/">
+                    <a href="/saml/login/?return_to=/tickets/">
+                        <div class="azureBanner text-center my-3 py-2 border bg-light rounded">
+
                             <img alt="Login using Azure AD" class="img-fluid"
                                 src="https://d12tly1s0ox52d.cloudfront.net/static/060423113549/support_center/images/azure%20ad.png">
-                        </a>
-                    </div>
+
+                        </div>
+                    </a>
                     <small class="d-block text-center text-muted fw-light">Or login using</small>
                     <form class="pt-3 text-muted">
                         <div class="mb-3">
@@ -74,7 +72,7 @@
                             <input type="password" class="form-control" id="password">
                         </div>
                         <div class="mb-3 form-check d-flex">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" checked>
                             <label class="ps-2 form-check-label" for="rememberMe">Remember Me</label>
                             <a href="#" class="ms-auto"><small>Forgot Password?</small></a>
                         </div>
@@ -82,14 +80,36 @@
                     </form>
                 </div>
             </div>
-
         </div>
         <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8 me-auto ms-5">
+                    <h6 class="text-muted fw-bolder lh-base">Login to track your existing support requests. If you have
+                        not
+                        created a
+                        ticket yet then you would need to <a class="link-info text-decoration-none fw-light"
+                            href="#">register</a> or <a class="link-info text-decoration-none fw-light" href="#">create
+                            a new
+                            ticket</a> to
+                        begin.</h6>
+                    <div class="d-block mt-3">
+                        <button type="submit" class="btn btn-dark w-50">Submit Ticket</button>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
-
     </div>
-
+    <footer>
+        <div class="bgGrey px-3 py-2 d-flex">
+            <p class="ms-auto pt-2">Copyright 2020, All rights reserved</p>
+        </div>
+        <div class="px-3 py-2 d-flex">
+            <small class="footerLink ms-auto pt-2"><a href="#" class="text-decoration-none fw-bold text-dark">Help Desk
+                    Software</a> by HappyFox</small>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -1,5 +1,8 @@
 body {
   font-family: sans-serif !important;
+}
+
+.bodyContainer {
   background-color: #f3f3f3;
 }
 
@@ -25,4 +28,13 @@ body {
 
 .azureBanner img {
   height: 28px;
+}
+
+.bgGrey {
+  background-color: #e6e6e6;
+  color: #666;
+}
+
+.footerLink a:hover {
+  color: #0062cc !important;
 }
