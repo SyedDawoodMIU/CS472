@@ -38,3 +38,15 @@ body {
 .footerLink a:hover {
   color: #0062cc !important;
 }
+
+.validators {
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+}
+
+.validatorBtn {
+  border: 0;
+  width: 88px;
+  height: 31px;
+}
+    
