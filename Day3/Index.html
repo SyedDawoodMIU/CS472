@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <title>CS HelpDesk Assignment 3</title>
+</head>
+
+<body class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex" href="/">
+                <img src="https://s3.us-west-2.amazonaws.com/hf-files-oregon/hdpmiu_user_customized/2022/08-30/a4ce5601-eeaa-4d0c-8119-4b5d80934707/GJ.jpg"
+                    alt="happy fox logo" width="33px" height="34px">
+                <div class="text-sm ps-3 ">| Compro Help Desk</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h6">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Agent Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Submit Ticket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Knowledge Base</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+
+                </ul>
+                <!-- <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+    <div class="row banner text-center text-light">
+        <h1>Welcome to our Support Center</h1>
+    </div>
+    <div class="row mt-5 bodyContainer">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-9 ms-auto px-5">
+                    <h3 class="fw-bold">Login</h3>
+                    <h6 class="text-muted">Login to know the status of the ticket</h6>
+                    <div class="azureBanner text-center my-3 py-2 border bg-light">
+                        <a href="/saml/login/?return_to=/tickets/">
+                            <img alt="Login using Azure AD" class="img-fluid"
+                                src="https://d12tly1s0ox52d.cloudfront.net/static/060423113549/support_center/images/azure%20ad.png">
+                        </a>
+                    </div>
+                    <small class="d-block text-center text-muted fw-light">Or login using</small>
+                    <form class="pt-3 text-muted">
+                        <div class="mb-3">
+                            <label for="email" class="form-label"><small>Username or Email</small></label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label"><small>Password</small></label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="mb-3 form-check d-flex">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="ps-2 form-check-label" for="rememberMe">Remember Me</label>
+                            <a href="#" class="ms-auto"><small>Forgot Password?</small></a>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif !important;
+  background-color: #f3f3f3;
+}
+
+.navbar-nav li {
+  font-size: 13px !important;
+  margin-right: 25px !important;
+}
+.navbar-brand div {
+  font-size: 16px !important;
+}
+
+.banner {
+  position: relative;
+  min-height: 180px;
+  padding: 57px 0;
+  background-color: #284678;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.banner > h1 {
+  font-size: 42px;
+}
+
+.azureBanner img {
+  height: 28px;
+}
