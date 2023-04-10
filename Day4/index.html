@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpg" href="../Images/SyedDawood.jpg" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <title>Assignment 4.1</title>
+</head>
+
+<body class="container-fluid px-0">
+    <div class="row">
+        <div class="col-md-4 ms-auto me-auto">
+            <form class="pt-3 text-muted" action="#" method="get">
+                <div class="mb-3">
+                    <label for="isSecure" class="form-label"><small>Website</small></label>
+                    <input type="isSecure" class="form-control" id="isSecure" required pattern="^(http|https):\/\/" title="Write address starting with http:// or https://">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"><small>Username or Email</small></label>
+                    <input type="email" class="form-control" id="email" required title="Please enter a valid username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label"><small>Password</small></label>
+                    <input type="password" class="form-control" id="password" minlength="10"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required
+                        title="At least 10 characters containing a lowercase and an uppercase and a digit.">
+                </div>
+                <div class="mb-3 form-check d-flex">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" checked>
+                    <label class="ps-2 form-check-label" for="rememberMe">Remember Me</label>
+                    <a href="#" class="ms-auto"><small>Forgot Password?</small></a>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Login</button>
+            </form>
+
+        </div>
+    </div>
+    <footer>
+      
+        <div class="validators py-3">
+            <div>
+                <a href="https://validator.w3.org/nu/?doc=https://syeddawoodmiu.github.io/Day4/index.html"
+                    target="_blank">
+                    <img class="validatorBtn" src="http://mumstudents.org/cs472/2014-09/images/w3c-html.png"
+                        alt="Validate HTML!" />
+                </a>
+                <a href="http://jigsaw.w3.org/css-validator/validator?uri=https://syeddawoodmiu.github.io/Day4/index.html"
+                    target="_blank">
+                    <img class="validatorBtn" src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                        alt="Validate CSS!" />
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
