@@ -376,6 +376,6 @@ dt {
 }
 
 .sectionTitle li::first-letter {
-  font-size:  2em !important;
+  font-size: 2em !important;
   letter-spacing: 2px;
 }
