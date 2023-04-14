@@ -10,15 +10,126 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="prism.css" />
     <title>Day 9 - Classes</title>
   </head>
 
   <body>
     <div class="container my-5">
       <h1 class="text-center mb-5">Classes</h1>
-
       <div class="mb-5">
-        <h2>Please open console for output</h2>
+        <h2>person.js</h2>
+        <pre class="language-javascript"><code class="language-javascript">
+          "use strict";
+
+          export class Person {
+            constructor(name, dateOfBirth) {
+              this.fullName = name;
+              this.dob = dateOfBirth;
+            }
+
+            get name() {
+              return this.fullName;
+            }
+
+            set name(name) {
+              this.fullName = name;
+            }
+
+            get dateOfBirth() {
+              return this.dob;
+            }
+
+            set dateOfBirth(dateOfBirth) {
+              this.dob = dateOfBirth;
+            }
+
+            toString() {
+              return `{ Name: ${this.name}, DateOfBirth: ${this.dateOfBirth
+                .toISOString()
+                .substring(0, 10)} }`;
+            }
+          }
+
+        </code></pre>
+        <h2>employee.js</h2>
+        <pre class="language-javascript"><code class="language-javascript">
+          "use strict";
+
+          import { Person } from "./person.js";
+
+          export class Employee extends Person {
+            constructor(name, dateOfBirth, salary, hireDate) {
+              super(name, dateOfBirth);
+              this.sal = salary;
+              this.hDate = hireDate;
+            }
+
+            get salary() {
+              return this.sal;
+            }
+
+            set salary(salary) {
+              this.sal = salary;
+            }
+
+            get hireDate() {
+              return this.hDate;
+            }
+
+            set hireDate(hireDate) {
+              this.hDate = hireDate;
+            }
+
+            doJob(jobTitle) {
+              console.log(
+                `${this.name} is a ${jobTitle} who earns $${this.salary.toFixed(2)}`
+              );
+            }
+          }
+
+
+        </code></pre>
+        <h2>main.js</h2>
+        <pre class="language-javascript"><code class="language-javascript">
+          "use strict";
+
+          import { Person } from "./person.js";
+          import { Employee } from "./employee.js";
+
+          let persons = [
+            new Person("Ana Smith", new Date("1998-12-15")),
+            new Person("Bob Jone", new Date("1945-11-16")),
+            new Person("Carlos Slim Helu", new Date("1976-09-24")),
+          ];
+
+          for (let person of persons) {
+            console.log(person.toString());
+          }
+
+          let jimHanson = new Employee(
+            "Jim Hanson",
+            new Date("1999-01-01"),
+            245990.0,
+            new Date("2020-01-01")
+          );
+
+
+          jimHanson.doJob("Software Engineer");
+
+
+
+        </code></pre>
+        <h2>Output</h2>
+        <pre class="language-javascript"><code class="language-javascript">
+          { Name: Ana Smith, DateOfBirth: 1998-12-15 }
+          { Name: Bob Jone, DateOfBirth: 1945-11-16 }
+          { Name: Carlos Slim Helu, DateOfBirth: 1976-09-24 }
+          Jim Hanson is a Software Engineer who earns $245990.00       
+         </code></pre>
+      </div>
+      <div class="mb-5">
+        <h4>May check console for output.</h4>
       </div>
 
       <footer>
@@ -55,5 +166,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="main.js"></script>
+    <script src="prism.js"></script>
   </body>
 </html>
