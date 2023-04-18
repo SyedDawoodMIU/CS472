@@ -285,7 +285,7 @@
           </tr>
         </table>
 
-        <h2>Anonymous Function (j)</h2>
+        <h2>Anonymous Function (j) - Iteration 1</h2>
         <table>
           <tr>
             <th>Creation Phase</th>
@@ -293,17 +293,39 @@
           </tr>
           <tr>
             <td>j = undefined</td>
-            <td>j = i (value from makeArmy's i)</td>
+            <td>j = 0 (value from makeArmy's i)</td>
           </tr>
         </table>
 
-        <h2>Returned Function (shooter)</h2>
+        <h2>Returned Function (shooter) - Iteration 1</h2>
         <table>
           <tr>
             <th>Execution Phase</th>
           </tr>
           <tr>
-            <td>Accesses j from Anonymous Function's scope</td>
+            <td>Accesses j from functions's closure (Iteration 1)</td>
+          </tr>
+        </table>
+
+        <h2>Anonymous Function (j) - Iteration 2</h2>
+        <table>
+          <tr>
+            <th>Creation Phase</th>
+            <th>Execution Phase</th>
+          </tr>
+          <tr>
+            <td>j = undefined</td>
+            <td>j = 1 (value from makeArmy's i)</td>
+          </tr>
+        </table>
+
+        <h2>Returned Function (shooter) - Iteration 2</h2>
+        <table>
+          <tr>
+            <th>Execution Phase</th>
+          </tr>
+          <tr>
+            <td>Accesses j from functions's closure (Iteration 2)</td>
           </tr>
         </table>
       </div>
