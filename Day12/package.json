@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "express intro",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SyedDawoodMIU/syedDawoodMIU.github.io.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Syed Dawood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SyedDawoodMIU/syedDawoodMIU.github.io/issues"
+  },
+  "homepage": "https://github.com/SyedDawoodMIU/syedDawoodMIU.github.io#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
