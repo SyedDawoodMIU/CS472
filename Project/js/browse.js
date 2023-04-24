@@ -166,9 +166,16 @@ function placeOrder() {
 }
 
 function searchProducts(searchTerm) {
+  let term = searchTerm.toLowerCase();
   const allProducts = JSON.parse(sessionStorage.getItem("products"));
   const filteredProducts = allProducts.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    (
+      product.title +
+      product.description +
+      product.price +
+      product.stock +
+      product.id
+    ).includes(term)
   );
   renderProducts(filteredProducts);
 }
@@ -178,7 +185,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
   searchProducts(searchTerm);
 });
 
-document.getElementById("searchInput").addEventListener("keydown", () => {
+document.getElementById("searchInput").addEventListener("keyup", () => {
   const searchTerm = document.getElementById("searchInput").value;
   searchProducts(searchTerm);
 });
