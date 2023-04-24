@@ -48,6 +48,9 @@
               <input type="number" class="form-control" id="price" required />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" id="reset" class="btn btn-secondary">
+              Reset
+            </button>
           </form>
         </div>
       </div>
@@ -55,7 +58,7 @@
 
     <script>
       window.onload = fetchBooks;
-      const bookList = document.getElementById("book-list");
+      const bookList = getNodeByID("book-list");
       function renderBook(book) {
         const row = `<tr id="${book.id}">
                        <td>${book.title}</td>
@@ -65,9 +68,9 @@
                          <button class="btn btn-warning" onclick='editBook(${JSON.stringify(
                            book
                          )})''>Edit</button>
-                         <button class="btn btn-danger" onclick='deleteBook(${
+                         <button class="btn btn-danger" onclick='deleteBook("${
                            book.id
-                         })''>Delete</button>
+                         }")''>Delete</button>
                        </td>
                      </tr>`;
 
@@ -78,6 +81,22 @@
         for (const book of books) {
           renderBook(book);
         }
+      }
+
+      function rerenderForEdit(book) {
+        let editedRow = document.getElementById(book.id);
+        document.getElementById(book.id).childNodes.forEach((x) => x.remove());
+        editedRow.innerHTML = `<td>${book.title}</td>
+                       <td>${book.description}</td>
+                       <td>${book.price}</td>
+                       <td>
+                         <button class="btn btn-warning" onclick='editBook(${JSON.stringify(
+                           book
+                         )})''>Edit</button>
+                         <button class="btn btn-danger" onclick='deleteBook("${
+                           book.id
+                         }")''>Delete</button>
+                       </td>`;
       }
 
       function fetchBooks() {
@@ -92,41 +111,40 @@
           .catch((error) => console.error(error));
       }
 
-      document
-        .getElementById("addBook")
-        .addEventListener("submit", async (event) => {
-          event.preventDefault();
-          const form = document.getElementById("book-form");
-          const titleInput = document.getElementById("title");
-          const descriptionInput = document.getElementById("description");
-          const priceInput = document.getElementById("price");
+      getNodeByID("addBook").addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-          const title = titleInput.value;
-          const description = descriptionInput.value;
-          const price = priceInput.value;
+        const form = getNodeByID("book-form");
+        const titleInput = getNodeByID("title");
+        const descriptionInput = getNodeByID("description");
+        const priceInput = getNodeByID("price");
 
-          const book = { title, description, price };
+        const title = titleInput.value;
+        const description = descriptionInput.value;
+        const price = priceInput.value;
 
-          try {
-            const response = await fetch("http://localhost:5000/books", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(book),
-            });
+        const book = { title, description, price };
 
-            if (response.ok) {
-              const data = await response.json();
-              renderBooks([data]);
-              form.reset();
-            } else {
-              console.error("Error:", response.status, response.statusText);
-            }
-          } catch (error) {
-            console.error("Error:", error);
+        try {
+          const response = await fetch("http://localhost:5000/books", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(book),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            renderBooks([data]);
+            getNodeByID("reset").click();
+          } else {
+            console.error("Error:", response.status, response.statusText);
           }
-        });
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
 
       async function editBook(book) {
         const newTitle = prompt("Enter the new title", book.title);
@@ -157,7 +175,7 @@
 
           if (response.ok) {
             const data = await response.json();
-            renderBooks([data]);
+            rerenderForEdit(data);
           } else {
             console.error("Error:", response.status, response.statusText);
           }
@@ -185,6 +203,10 @@
           .catch((error) => {
             console.error("Error deleting book:", error);
           });
+      }
+
+      function getNodeByID(id) {
+        return document.getElementById(id);
       }
     </script>
   </body>
