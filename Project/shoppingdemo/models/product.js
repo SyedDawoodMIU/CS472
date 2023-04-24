@@ -27,6 +27,10 @@ module.exports = class Product {
     return db;
   }
 
+  static getByID(id) {
+    return db.find((x) => x.id === id);
+  }
+
   static deleteById(prodId) {
     const index = db.findIndex((prod) => prod.id == prodId);
     const deletedProd = db[index];

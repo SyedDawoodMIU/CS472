@@ -10,7 +10,7 @@ app.use(express.json()); //req.body = {...}
 
 app.use('/login', authRoutes);
 app.use('/products', productRouter);
-app.use('/orderRouter', orderRouter);
+app.use('/order', orderRouter);
 
 
 app.listen(5000, ()=>console.log('listen on 5000'));
