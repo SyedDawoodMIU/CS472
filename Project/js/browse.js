@@ -30,7 +30,7 @@ function renderProducts(data) {
           <td id="${singleRow.id}-stock">${
       singleRow.stock === 0 ? "Out of Stock" : singleRow.stock
     }</td>
-          <td ><img src="\\${singleRow.image}" width="100px"></td>
+          <td ><img src="${singleRow.image}" width="100px"></td>
           <td >${singleRow.price}</td>
           <td ><button class="btn btn-sm btn-primary" onclick='addToCart(${JSON.stringify(
             singleRow

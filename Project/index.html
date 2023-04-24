@@ -13,6 +13,44 @@
     />
     <link rel="stylesheet" href="css/main-styles.css" />
 
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      .nav-item {
+        border-left: white 1px solid;
+        padding-left: 2em;
+        padding-right: 2em;
+      }
+
+      .input-group {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+
+      .table {
+        margin-top: 2rem;
+      }
+
+      footer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+      }
+
+      footer span {
+        display: inline-block;
+        margin: 0.5rem;
+      }
+    </style>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -29,9 +67,7 @@
     <header>
       <!-- Start Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a style="padding-right: 2em" class="navbar-brand" href="index.html"
-          >Shopping Cart</a
-        >
+        <a class="navbar-brand" href="index.html">Shopping Cart</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,24 +82,10 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
-            <li
-              class="nav-item"
-              style="
-                border-left: white 1px solid;
-                padding-left: 2em;
-                padding-right: 2em;
-              "
-            >
+            <li class="nav-item">
               <a class="nav-link" href="/project/index.html">Home</a>
             </li>
-            <li
-              class="nav-item"
-              style="
-                border-left: white 1px solid;
-                padding-left: 2em;
-                padding-right: 2em;
-              "
-            >
+            <li class="nav-item">
               <a class="nav-link" href="/Project/add.html">Add Products</a>
             </li>
           </ul>
@@ -77,16 +99,12 @@
 
     <!-- Start main-content -->
     <main>
-      <div style="padding-top: 1em" class="container">
+      <div class="container">
         <!-- main content here -->
         <h3>Product List</h3>
         <hr />
 
-        <div
-          style="margin-top: 1em"
-          id="divPatientsList"
-          style="font-size: 1em"
-        >
+        <div id="divPatientsList" style="font-size: 1em">
           <div class="row">
             <div class="col">
               <div class="input-group">
@@ -136,7 +154,7 @@
 
         <h3>Cart</h3>
         <hr />
-        <div style="margin-top: 1em" style="font-size: 1em">
+        <div style="font-size: 1em">
           <table class="table table-striped" id="mytable">
             <thead>
               <tr>
