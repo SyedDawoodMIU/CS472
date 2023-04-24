@@ -20,7 +20,7 @@ window.onload = function () {
           <td >${singleRow.title}</td>
           <td >${singleRow.description}</td>
           <td id="${singleRow.id}-stock">${singleRow.stock}</td>
-          <td ><img src="${singleRow.imageURL}" width="40px"></td>
+          <td ><img src="${singleRow.image}" width="40px"></td>
           <td >${singleRow.price}</td>
           <td ><button onclick='addToCart(${JSON.stringify(
             singleRow
