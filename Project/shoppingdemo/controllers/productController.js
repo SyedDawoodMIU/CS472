@@ -1,7 +1,6 @@
 const Product = require('../models/product');
 
 exports.save = (req, res, next) => {
-    debugger;
     const imagePath = req.file ? req.file.path : "";
     
     const addedProd = new Product(null, req.body.title, req.body.description, req.body.price, req.body.stock, imagePath).save();
