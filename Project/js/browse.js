@@ -37,7 +37,6 @@ window.onload = function () {
 let cart = [];
 
 function addToCart(item) {
-  debugger;
   if (!cart[item.id]) {
     cart[item.id] = { ...item, quantity: 1 };
   } else {
@@ -104,4 +103,27 @@ function changeQuantity(item, change, newValue) {
   }
 
   renderCartItems();
+}
+
+
+function placeOrder() {
+  const cartData = Object.values(cart);
+  fetch("http://localhost:5000/Order/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+    },
+    body: JSON.stringify(cartData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // clear the cart
+      cart = [];
+      renderCartItems();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }

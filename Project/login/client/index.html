@@ -26,7 +26,6 @@
                             //here is error
                             document.getElementById('errorMsg').innerHTML = data.error;
                         } else {
-                            debugger;
                             sessionStorage.setItem('accessToken', data.accessToken);
                             document.getElementById('login').remove();
                             document.getElementById('main-content').style.display = 'block';
