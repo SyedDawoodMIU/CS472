@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookstore</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-4">Bookstore</h1>
+      <div class="row mt-4">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="book-list"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <form id="addBook">
+            <h2>Add New Book</h2>
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" required />
+            </div>
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea
+                class="form-control"
+                id="description"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="price">Price:</label>
+              <input type="number" class="form-control" id="price" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = fetchBooks;
+      const bookList = document.getElementById("book-list");
+      function renderBook(book) {
+        const row = `<tr id="${book.id}">
+                       <td>${book.title}</td>
+                       <td>${book.description}</td>
+                       <td>${book.price}</td>
+                       <td>
+                         <button class="btn btn-warning" onclick='editBook(${JSON.stringify(
+                           book
+                         )})''>Edit</button>
+                         <button class="btn btn-danger" onclick='deleteBook(${
+                           book.id
+                         })''>Delete</button>
+                       </td>
+                     </tr>`;
+
+        bookList.innerHTML += row;
+      }
+
+      function renderBooks(books) {
+        for (const book of books) {
+          renderBook(book);
+        }
+      }
+
+      function fetchBooks() {
+        fetch("http://localhost:5000/books")
+          .then((response) => response.json())
+          .then((data) => {
+            bookList.innerHTML = "";
+            data.forEach((book) => {
+              renderBook(book);
+            });
+          })
+          .catch((error) => console.error(error));
+      }
+
+      document
+        .getElementById("addBook")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const form = document.getElementById("book-form");
+          const titleInput = document.getElementById("title");
+          const descriptionInput = document.getElementById("description");
+          const priceInput = document.getElementById("price");
+
+          const title = titleInput.value;
+          const description = descriptionInput.value;
+          const price = priceInput.value;
+
+          const book = { title, description, price };
+
+          try {
+            const response = await fetch("http://localhost:5000/books", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(book),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              renderBooks([data]);
+              form.reset();
+            } else {
+              console.error("Error:", response.status, response.statusText);
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        });
+
+      async function editBook(book) {
+        const newTitle = prompt("Enter the new title", book.title);
+        const newDescription = prompt(
+          "Enter the new description",
+          book.description
+        );
+        const newPrice = prompt("Enter the new price", book.price);
+
+        const updatedBook = {
+          ...book,
+          title: newTitle,
+          description: newDescription,
+          price: newPrice,
+        };
+
+        try {
+          const response = await fetch(
+            `http://localhost:5000/books/${book.id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedBook),
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            renderBooks([data]);
+          } else {
+            console.error("Error:", response.status, response.statusText);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      function deleteBook(bookId) {
+        fetch(`http://localhost:5000/books/${bookId}`, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            if (response.ok) {
+              const row = document.getElementById(bookId);
+              row.remove();
+            } else {
+              console.error(
+                "Error deleting book:",
+                response.status,
+                response.statusText
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting book:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
