@@ -1,56 +1,81 @@
+// Loading and rendering product data from a server.
+// Redirecting unauthenticated users to the login page.
+// Adding, updating, and removing products in the cart.
+// Calculating and displaying the total cost of the cart.
+// Placing an order by sending cart data to the server.
+// Searching and sorting the product list based on user input.
+// Persisting cart data in session storage across page loads.
+
+
+
 window.onload = loadProducts;
+
+let cart = {};
+
+function checkAccessTokenAndRedirect() {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) {
+    window.location.href = "login.html";
+  }
+}
+
 function loadProducts() {
+  checkAccessTokenAndRedirect();
   fetch("http://localhost:5000/products", {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        document.getElementById("tbodyProductList").innerHTML = data.error;
-      } else {
-        if (data) {
-          sessionStorage.setItem("products", JSON.stringify(data));
-          renderProducts(data);
-        }
-      }
-    });
+    .then(handleProductData)
+    .catch((error) => console.error(error));
 }
 
-let cart = [];
+function handleProductData(data) {
+  if (data.error) {
+    document.getElementById("tbodyProductList").innerHTML = data.error;
+  } else {
+    if (data) {
+      localStorage.setItem("products", JSON.stringify(data));
+      renderProducts(data);
+      getCartFromSessionStorage(data);
+    }
+  }
+}
 
 function renderProducts(data) {
   let rows = "";
-  for (const singleRow of data) {
-    rows += `<tr id="${singleRow.id}">
-          <td >${singleRow.id}</td>
-          <td >${singleRow.title}</td>
-          <td >${singleRow.description}</td>
-          <td id="${singleRow.id}-stock">${
-      singleRow.stock === 0 ? "Out of Stock" : singleRow.stock
-    }</td>
-          <td ><img src="${singleRow.image}" width="100px"></td>
-          <td >${singleRow.price}</td>
-          <td ><button class="btn btn-sm btn-primary" onclick='addToCart(${JSON.stringify(
-            singleRow
-          )})' ${
-      singleRow.stock === 0 ? "disabled" : ""
-    }>add to cart</button></td>
-      </tr>`;
-  }
+  data.forEach((singleRow) => {
+    rows += createProductRow(singleRow);
+  });
 
   document.getElementById("tbodyProductList").innerHTML = rows;
 }
 
+function createProductRow(singleRow) {
+  return `<tr id="${singleRow.id}">
+          <td>${singleRow.id}</td>
+          <td>${singleRow.title}</td>
+          <td>${singleRow.description}</td>
+          <td id="${singleRow.id}-stock">${
+    singleRow.stock === 0 ? "Out of Stock" : singleRow.stock
+  }</td>
+          <td><img src="${singleRow.image}" width="100px"></td>
+          <td>${singleRow.price}</td>
+          <td><button class="btn btn-sm btn-primary" onclick='addToCart(${JSON.stringify(
+            singleRow
+          )})' ${
+    singleRow.stock === 0 ? "disabled" : ""
+  }>add to cart</button></td>
+      </tr>`;
+}
+
 function addToCart(item) {
-  if (!cart[item.id]) {
+  if (!cart || !cart[item.id]) {
     cart[item.id] = { ...item, quantity: 1 };
-  } else {
+  } else if (cart && cart[item.id]) {
     cart[item.id].quantity += 1;
   }
-
-  enablePlaceOrder();
 
   renderCartItems();
 }
@@ -60,66 +85,62 @@ function enablePlaceOrder() {
 }
 
 function removeFromCart(item) {
-  cart = cart.filter((x) => x.id !== item.id);
+  delete cart[item.id];
+  if (!cart || Object.keys(cart).length === 0) {
+    disablePlaceOrder();
+    const tbodyCart = document.getElementById("tbodyCart");
+    tbodyCart.innerHTML = `<tr><td colspan="10">There is no item in your cart!</td></tr>`;
+  }
+
   renderCartItems();
 }
 
-function renderCartItems() {
+function disablePlaceOrder() {
+  document.getElementById("placeOrder").setAttribute("disabled", true);
+}
+
+function renderCartItems(updateSession = true) {
+  if (updateSession) {
+    updateCartInSessionStorage(cart);
+  }
+
   const tbodyCart = document.getElementById("tbodyCart");
   tbodyCart.innerHTML = "";
 
   let totalCost = 0;
-
-  for (const index in cart) {
-    const row = document.createElement("tr");
-    const item = cart[index];
-    const nameCell = document.createElement("td");
-    nameCell.innerText = item.title;
-    row.appendChild(nameCell);
-
-    const priceCell = document.createElement("td");
-    priceCell.innerText = item.price;
-    row.appendChild(priceCell);
-
-    const totalCell = document.createElement("td");
-    totalCell.innerText = item.quantity * item.price;
-    row.appendChild(totalCell);
-    totalCost += item.quantity * item.price;
-
-    const quantityCell = document.createElement("td");
-    const minusBtn = document.createElement("button");
-    minusBtn.innerText = "-";
-    minusBtn.onclick = () => changeQuantity(item, -1);
-    quantityCell.appendChild(minusBtn);
-
-    const quantityInput = document.createElement("input");
-    quantityInput.type = "text";
-    quantityInput.value = item.quantity;
-    quantityInput.style.width = "50px";
-    quantityInput.style.textAlign = "center";
-    quantityInput.onchange = (e) =>
-      changeQuantity(item, 0, parseInt(e.target.value));
-    quantityCell.appendChild(quantityInput);
-
-    const plusBtn = document.createElement("button");
-    plusBtn.innerText = "+";
-    plusBtn.onclick = () => changeQuantity(item, 1);
-    quantityCell.appendChild(plusBtn);
-
-    row.appendChild(quantityCell);
-
-    const removeCell = document.createElement("td");
-    const removeBtn = document.createElement("button");
-    removeBtn.innerText = "Remove";
-    removeBtn.onclick = () => removeFromCart(item);
-    removeCell.appendChild(removeBtn);
-    row.appendChild(removeCell);
-
+  for (const key in cart) {
+    enablePlaceOrder();
+    const row = createCartItemRow(cart[key]);
     tbodyCart.appendChild(row);
+    totalCost += cart[key].quantity * cart[key].price;
   }
 
   const totalCostElement = document.getElementById("totalCost");
   totalCostElement.innerText = "Total Cost: $" + totalCost.toFixed(2);
+}
+
+function createCartItemRow(item) {
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${item.title}</td>
+    <td>${item.price}</td>
+    <td>${item.quantity * item.price}</td>
+    <td>
+      <button onclick='changeQuantity(${JSON.stringify(item)}, -1)'>-</button>
+      <input type="text" value="${
+        item.quantity
+      }" style="width: 50px; text-align: center;" onchange='handleQuantityChange(event, ${JSON.stringify(
+    item
+  )})' />
+      <button onclick='changeQuantity(${JSON.stringify(item)}, 1)'>+</button>
+    </td>
+    <td>
+      <button onclick='removeFromCart(${JSON.stringify(item)})'>Remove</button>
+    </td>
+  `;
+
+  return row;
 }
 
 function changeQuantity(item, change, newValue) {
@@ -130,44 +151,50 @@ function changeQuantity(item, change, newValue) {
   }
 
   if (cart[item.id].quantity < 1) {
-    cart = cart.filter((x) => x.id != item.id);
+    removeFromCart(item);
   }
 
   renderCartItems();
 }
 
+function handleQuantityChange(event, item) {
+  const newValue = parseInt(event.target.value);
+  changeQuantity(item, 0, newValue);
+}
+
 function placeOrder() {
-  document.getElementById("placeOrder").setAttribute("disabled", true);
-  if (cart.filter((x) => x.quantity === 0).length === cart.length) {
+  if (!cart || Object.keys(cart).length === 0) {
     alert("Item quantity must be greater than 0");
     return;
   }
+
   const cartData = Object.values(cart);
   fetch("http://localhost:5000/Order/checkout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
     body: JSON.stringify(cartData),
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-
-      cart = [];
-      renderCartItems();
-      loadProducts();
-    })
+    .then(handleOrderResponse)
     .catch((error) => {
       console.error(error);
       enablePlaceOrder();
     });
 }
 
+function handleOrderResponse(data) {
+  disablePlaceOrder();
+  cart = {};
+  renderCartItems();
+  loadProducts();
+}
+
 function searchProducts(searchTerm) {
   let term = searchTerm.toLowerCase();
-  const allProducts = JSON.parse(sessionStorage.getItem("products"));
+  const allProducts = JSON.parse(localStorage.getItem("products"));
   const filteredProducts = allProducts.filter((product) =>
     (
       product.title +
@@ -175,7 +202,9 @@ function searchProducts(searchTerm) {
       product.price +
       product.stock +
       product.id
-    ).includes(term)
+    )
+      .toLowerCase()
+      .includes(term)
   );
   renderProducts(filteredProducts);
 }
@@ -191,7 +220,7 @@ document.getElementById("searchInput").addEventListener("keyup", () => {
 });
 
 function sortProducts(sortMethod) {
-  const allProducts = JSON.parse(sessionStorage.getItem("products"));
+  const allProducts = JSON.parse(localStorage.getItem("products"));
 
   if (sortMethod === "asc") {
     allProducts.sort((a, b) => a.price - b.price);
@@ -206,3 +235,58 @@ document.getElementById("sortSelect").addEventListener("change", (event) => {
   const sortMethod = event.target.value;
   sortProducts(sortMethod);
 });
+
+function updateCartInSessionStorage(cart) {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    localStorage.setItem(accessToken, JSON.stringify(cart));
+  }
+}
+
+function getCartFromSessionStorage(products) {
+  if (!products || products.length === 0) {
+    cart = {};
+    updateCartInSessionStorage(cart);
+  }
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    const storedCart = localStorage.getItem(accessToken);
+    if (storedCart) {
+      let parsedCart = JSON.parse(storedCart);
+      for (const product of products) {
+        if (!parsedCart[product.id]) {
+          delete parsedCart[product.id];
+        }
+      }
+      cart = parsedCart;
+      renderCartItems(false);
+    }
+  }
+}
+
+function checkAccessTokenAndRedirect() {
+  const accessToken = localStorage.getItem("accessToken");
+  if (!accessToken) {
+    window.location.href = "login.html";
+  }
+}
+
+
+function initEventListeners() {
+  document.getElementById("searchButton").addEventListener("click", () => {
+    const searchTerm = document.getElementById("searchInput").value;
+    searchProducts(searchTerm);
+  });
+
+  document.getElementById("searchInput").addEventListener("keyup", () => {
+    const searchTerm = document.getElementById("searchInput").value;
+    searchProducts(searchTerm);
+  });
+
+  document.getElementById("sortSelect").addEventListener("change", (event) => {
+    const sortMethod = event.target.value;
+    sortProducts(sortMethod);
+  });
+}
+
+initEventListeners();

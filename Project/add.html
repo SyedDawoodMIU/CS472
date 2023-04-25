@@ -29,9 +29,7 @@
     <header>
       <!-- Start Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a style="padding-right: 2em" class="navbar-brand" href="index.html"
-          >Shopping Cart</a
-        >
+        <a class="navbar-brand" href="index.html">Shopping Cart</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,14 +44,7 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
-            <li
-              class="nav-item"
-              style="
-                border-left: white 1px solid;
-                padding-left: 2em;
-                padding-right: 2em;
-              "
-            >
+            <li class="nav-item">
               <a class="nav-link" href="/project/index.html">Home</a>
             </li>
           </ul>
@@ -78,79 +69,98 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="title">Title:</label>
+                  <label for="title">Title*:</label>
                   <input
+                    required
                     class="form-control"
                     type="text"
                     name="title"
                     id="title"
                     placeholder="Enter Product Title"
-                    required
+                    minlength="1"
                   />
+                  <div class="invalid-feedback">
+                    Please enter a product title.
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="price">Price:</label>
+                  <label for="price">Price*:</label>
                   <input
+                    required
                     class="form-control"
                     name="price"
                     type="number"
-                    min="0"
+                    min="0.01"
+                    step="0.01"
                     id="price"
                     placeholder="Enter Product Price"
                   />
+                  <div class="invalid-feedback">
+                    Please enter a valid product price.
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="description">Description:</label>
+                  <label for="description">Description*:</label>
                   <textarea
+                    required
                     class="form-control"
                     name="description"
                     id="description"
                     cols="30"
                     rows="2"
                     placeholder="Enter Product Description"
+                    minlength="1"
                   ></textarea>
+                  <div class="invalid-feedback">
+                    Please enter a product description.
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="stock">Stock:</label>
+                  <label for="stock">Stock*:</label>
                   <input
+                    required
                     class="form-control"
                     type="number"
                     name="stock"
                     id="stock"
                     placeholder="Enter Product Stock"
-                    min="0"
-                    required
+                    min="1"
                   />
+                  <div class="invalid-feedback">
+                    Please enter a valid product stock.
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="image">Image:</label>
+                  <label for="image">Image*:</label>
                   <input
+                    required
                     class="form-control"
                     type="file"
                     name="image"
                     id="image"
                     accept="image/*"
-                    required
                   />
+                  <div class="invalid-feedback">
+                    Please select a valid image file.
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div style="text-align: right" class="col-md-12">
+              <div class="col-md-12 text-right">
                 <button
-                  style="padding: 0.5em 4em"
                   id="btnReset"
                   type="reset"
                   class="btn btn-secondary btn-inline"
@@ -158,18 +168,12 @@
                   Reset
                 </button>
                 <button
-                  style="margin-left: 1em; padding: 0.5em 4em"
                   id="btnRegister"
-                  type="button"
-                  class="btn btn-primary btn-inline"
+                  type="submit"
+                  class="btn btn-primary btn-inline ml-3"
                 >
                   Register
                 </button>
-              </div>
-            </div>
-            <div class="row">
-              <div style="text-align: right" class="col-md-12">
-                <div id="output"></div>
               </div>
             </div>
           </fieldset>
@@ -185,6 +189,7 @@
         <span style="float: right; margin-right: 1em"> &copy; April 2023</span>
       </div>
     </footer>
+
     <script src="./js/register.js"></script>
   </body>
 </html>

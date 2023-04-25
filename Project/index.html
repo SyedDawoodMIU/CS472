@@ -12,45 +12,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/main-styles.css" />
-
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      header {
-        margin-bottom: 2rem;
-      }
-
-      .nav-item {
-        border-left: white 1px solid;
-        padding-left: 2em;
-        padding-right: 2em;
-      }
-
-      .input-group {
-        margin-top: 1em;
-        margin-bottom: 1em;
-      }
-
-      .table {
-        margin-top: 2rem;
-      }
-
-      footer {
-        margin-top: 2rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: #f8f9fa;
-        border-top: 1px solid #dee2e6;
-      }
-
-      footer span {
-        display: inline-block;
-        margin: 0.5rem;
-      }
-    </style>
-
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -165,7 +126,9 @@
                 <th scope="col">Remove</th>
               </tr>
             </thead>
-            <tbody id="tbodyCart"></tbody>
+            <tbody id="tbodyCart">
+              <tr><td colspan="10">There is no item in your cart!</td></tr>
+            </tbody>
           </table>
         </div>
         <div class="row">

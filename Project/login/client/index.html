@@ -26,7 +26,7 @@
                             //here is error
                             document.getElementById('errorMsg').innerHTML = data.error;
                         } else {
-                            sessionStorage.setItem('accessToken', data.accessToken);
+                            localStorage.setItem('accessToken', data.accessToken);
                             document.getElementById('login').remove();
                             document.getElementById('main-content').style.display = 'block';
                             window.location.replace("http://127.0.0.1:5500/Project/shopping-cart_frontend_demo/index.html");
@@ -39,10 +39,10 @@
 
 
         function fetchProduct(){
-            // console.log(`${sessionStorage.getItem('accessToken')}`);
+            // console.log(`${localStorage.getItem('accessToken')}`);
             fetch('http://localhost:5000/products', {
                                 headers: {
-                                    Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+                                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                                 }
                             }).then(response => response.json())
                                 .then(data => {

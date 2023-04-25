@@ -125,7 +125,7 @@
           const password = $("#password").val();
 
           {
-            fetch("http://localhost:3000/login", {
+            fetch("http://localhost:5000/login", {
               method: "POST",
               body: JSON.stringify({
                 username: username,
@@ -144,7 +144,7 @@
                   errorNode.innerHTML = data.error;
                 } else {
                   errorNode.classList.add("d-none");
-                  sessionStorage.setItem("accessToken", data.accessToken);
+                  localStorage.setItem("accessToken", data.accessToken);
                   window.location.href = "index.html";
                 }
               });
